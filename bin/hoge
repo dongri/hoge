@@ -23,8 +23,6 @@ def mkDirIfNotExist
   if Dir.exist?(PATH)
     return
   else
-    # Dir.mkdir(BASE_DIR, 0744)
-    # File.open(PATH,"w")
     FileUtils.touch(PATH)
   end
 end
@@ -81,7 +79,7 @@ when "ls" then
   data = open(PATH) do |io|
     JSON.load(io)
   end
-  puts data
+  puts JSON.pretty_generate(data)
 else
   putsHelp()
 end
